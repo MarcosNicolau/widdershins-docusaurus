@@ -17,8 +17,9 @@ Below is the original documentation of widdershins.
 ## How to install it
 
 1. Clone the repo: `git clone https://github.com/MarcosNicolau/widdershins-docusaurus`
-2. Install it globally: `npm install -g .`
-3. Verify it works: `widdershins --version`.
+2. Install deps: `npm install`
+3. Install it globally: `npm install -g .`
+4. Verify it works: `widdershins --version`.
 
 ## widdershins
 
