@@ -1,4 +1,27 @@
-# widdershins
+# widdershins fork to work with docusaurus
+
+A fork of widdershins to generate markdown using docusaurus features.
+
+## Changes
+
+-   Code snippets in openapi3 have been updated to be contained in `<Tabs>` and `<TabItem>`.
+-   Response examples in openapi3 have been update to be contained in `<Tabs>` and `<TabItem>`.
+-   The order has been change a little to my personal preference.
+
+The complete diff can be seen [here](https://github.com/MarcosNicolau/widdershins-docusaurus/pull/1).
+
+Took inspiration from this [documentation](https://countrystatecity.in/docs/api/all-countries/) which I found on docusaurus showcase section.
+
+Below is the original documentation of widdershins.
+
+## How to install it
+
+1. Clone the repo: `git clone https://github.com/MarcosNicolau/widdershins-docusaurus`
+2. Install it globally: `npm install -g .`
+3. Verify it works: `widdershins --version`.
+
+## widdershins
+
 OpenAPI / Swagger / AsyncAPI / Semoasa definition to [Slate](https://github.com/slatedocs/slate) /
 [ReSlate](https://github.com/mermade/reslate) compatible markdown
 
@@ -7,34 +30,35 @@ OpenAPI / Swagger / AsyncAPI / Semoasa definition to [Slate](https://github.com/
 
 <img src="http://mermade.github.io/widdershins/logo.png" width="247px" height="250px" />
 
-### Widdershins *adverb*:
-* In a direction contrary to the sun's course;
-* anticlockwise;
-* helping you produce static documentation from your OpenAPI 3.0 / Swagger 2.0 / AsyncAPI 1.x / Semoasa 0.1.0 definition
+### Widdershins _adverb_:
+
+-   In a direction contrary to the sun's course;
+-   anticlockwise;
+-   helping you produce static documentation from your OpenAPI 3.0 / Swagger 2.0 / AsyncAPI 1.x / Semoasa 0.1.0 definition
 
 ![Widdershins screenshot](https://mermade.github.io/widdershins/screenshot.png)
 
 ### News
 
-* Version 4.0 changes:
-  * Now uses Promises not callbacks
-  * Option to output html directly, and to ReSpec format
-  * Unified JavaScript and Node.js code-samples, PHP added
-  * `restrictions` column (`readOnly`/`writeOnly`) added to schema templates
-  * Numerous bug fixes
-* As of v3.0.0 Widdershins no longer expands the definition of OpenAPI body parameters / requestBodies by default, unless they have an inline schema. You can restore the old behaviour by using the `--expandBody` option.
-* You may limit the depth of schema examples using the `--maxDepth` option. The default is 10.
-* To omit schemas entirely, please copy and customise the `main.dot` template.
-* As of v3.1.0 Widdershins includes a generated `Authorization` header in OpenAPI code samples. If you wish to omit this, see [here](/templates/openapi3/README.md).
+-   Version 4.0 changes:
+    -   Now uses Promises not callbacks
+    -   Option to output html directly, and to ReSpec format
+    -   Unified JavaScript and Node.js code-samples, PHP added
+    -   `restrictions` column (`readOnly`/`writeOnly`) added to schema templates
+    -   Numerous bug fixes
+-   As of v3.0.0 Widdershins no longer expands the definition of OpenAPI body parameters / requestBodies by default, unless they have an inline schema. You can restore the old behaviour by using the `--expandBody` option.
+-   You may limit the depth of schema examples using the `--maxDepth` option. The default is 10.
+-   To omit schemas entirely, please copy and customise the `main.dot` template.
+-   As of v3.1.0 Widdershins includes a generated `Authorization` header in OpenAPI code samples. If you wish to omit this, see [here](/templates/openapi3/README.md).
 
 ### To install
 
-* Clone the git repository, and `npm i` to install dependencies, or
-* `npm install -g widdershins` to install globally
+-   Clone the git repository, and `npm i` to install dependencies, or
+-   `npm install -g widdershins` to install globally
 
 ### Getting started
 
-Widdershins is generally used as a stage in an API documentation pipeline. The pipeline begins with an API definition in OpenAPI 3.x, OpenAPI 2.0 (fka Swagger), API Blueprint, AsyncAPI or Semoasa format. Widdershins converts this description into markdown suitable for use by a **renderer**, such as [Slate](https://github.com/slatedocs/slate), [ReSlate](https://github.com/mermade/reslate), [Shins](https://github.com/mermade/shins)  (*deprecated*) or html suitable for use with [ReSpec](https://github.com/w3c/respec).
+Widdershins is generally used as a stage in an API documentation pipeline. The pipeline begins with an API definition in OpenAPI 3.x, OpenAPI 2.0 (fka Swagger), API Blueprint, AsyncAPI or Semoasa format. Widdershins converts this description into markdown suitable for use by a **renderer**, such as [Slate](https://github.com/slatedocs/slate), [ReSlate](https://github.com/mermade/reslate), [Shins](https://github.com/mermade/shins) (_deprecated_) or html suitable for use with [ReSpec](https://github.com/w3c/respec).
 
 If you need to create your input API definition, [this list of available editors](https://apis.guru/awesome-openapi3/category.html#editors) may be useful.
 
@@ -48,44 +72,44 @@ node widdershins --search false --language_tabs 'ruby:Ruby' 'python:Python' --su
 
 ### Options
 
-| CLI parameter name | JavaScript parameter name | Type | Default value | Description |
-| --- | --- | --- | --- | --- |
-| --clipboard | options.clipboard | `boolean` | `true` | Sets the value of the `code_clipboard` property in the heading, so that markdown processors can include clipboard support. |
-| --customApiKeyValue | options.customApiKeyValue | `string` | `ApiKey` | Set a custom API key value to use as the API key in generated code examples. |
-| --expandBody | options.expandBody | `boolean` | `false` | If a method's requestBody parameter refers to a schema by reference (not with a inline schema), by default, Widdershins shows only a reference to this parameter. Set this option to true to expand the schema and show all properties in the request body. |
-| --headings | options.headings | `integer` | 2 | Set the value of the `headingLevel` parameter in the header so markdown processors know how many heading levels to show in the table of contents. Currently supported only by Shins, not by Slate, which lacks this feature. |
-| --omitBody | options.omitBody | `boolean` | `false` | By default, Widdershins includes the body parameter as a row in the parameters table before the rows that represent the fields in the body. Set this parameter to omit that body parameter row. |
-| --omitHeader | options.omitHeader | `boolean` | `false` | Omit the header / YAML front-matter in the generated Markdown file. |
-| --resolve | options.resolve | `boolean` | `false` | Resolve external $refs, using the `source` parameter or the input file as the base location. |
-| --shallowSchemas | options.shallowSchemas | `boolean` | `false` | When referring to a schema with a $ref, don't show the full contents of the schema. |
-| N/A | options.source | `string` | None | The absolute location or URL of the source file to use as the base to resolve relative references ($refs) from; required if options.resolve is set to true. For CLI commands, Widdershins uses the input file as the base for the $refs. |
-| --summary | options.tocSummary | `boolean` | `false` | Use the operation summary as the TOC entry instead of the ID. |
-| --useBodyName | options.useBodyName | `boolean` | Use original param name for OpenAPI 2.0 body parameter. |
-| -v, --verbose | options.verbose | `boolean` | `false` | Increase verbosity. |
-| -h, --help | options.help | `boolean` | `false` | Show help. |
-| --version | options.version | `boolean` | `false` | Show version number. |
-| -c, --code | options.codeSamples | `boolean` | `false` | Omit generated code samples. |
-| --httpsnippet | options.httpsnippet | `boolean` | `false` | Use httpsnippet to generate code samples. |
-| -d, --discovery | options.discovery | `boolean` | `false` | Include schema.org WebAPI discovery data. |
-| -e, --environment | N/A | `string` | None | File to load config options from. |
-| -i, --includes | options.includes | `string` | None | List of files to put in the `include` header of the output Markdown. Processors such as Shins can then import the contents of these files. |
-| -l, --lang | options.lang | `boolean` | `false` | Generate the list of languages for code samples based on the languages used in the source file's `x-code-samples` examples. |
-| --language_tabs | options.language_tabs | `string` | (Differs for each input type) | List of language tabs for code samples using language[:label[:client]] format, such as `javascript:JavaScript:request`. |
-| -m, --maxDepth | options.maxDepth | `integer` | 10 | Maximum depth to show for schema examples. |
-| -o, --outfile | N/A | `string` | None | File to write the output markdown to. If left blank, Widdershins sends the output to stdout. |
-| -r, --raw | **inverse** of options.sample | `boolean` | `false` | Output raw schemas instead of example values. |
-| -s, --search | options.search | `boolean` | `true` | Set the value of the `search` parameter in the header so Markdown processors like Slate include search or not in their output. |
-| -t, --theme | options.theme | `string` | darkula | Syntax-highlighter theme to use. |
-| -u, --user_templates | options.user_templates | `string` | None | Directory to load override templates from. |
-| -x, --experimental | options.experimental | `boolean` |  | Use httpSnippet for multipart mediatypes. |
-| -y, --yaml | options.yaml | `boolean` | `false` | Display JSON schemas in YAML format. |
-|  | options.templateCallback | `function` | None | A `function` that is called before and after each template (JavaScript code only). |
-|  | options.toc_footers | `object` | A map of `url`s and `description`s to be added to the ToC footers array (JavaScript code only). |
+| CLI parameter name   | JavaScript parameter name     | Type       | Default value                                                                                   | Description                                                                                                                                                                                                                                                 |
+| -------------------- | ----------------------------- | ---------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --clipboard          | options.clipboard             | `boolean`  | `true`                                                                                          | Sets the value of the `code_clipboard` property in the heading, so that markdown processors can include clipboard support.                                                                                                                                  |
+| --customApiKeyValue  | options.customApiKeyValue     | `string`   | `ApiKey`                                                                                        | Set a custom API key value to use as the API key in generated code examples.                                                                                                                                                                                |
+| --expandBody         | options.expandBody            | `boolean`  | `false`                                                                                         | If a method's requestBody parameter refers to a schema by reference (not with a inline schema), by default, Widdershins shows only a reference to this parameter. Set this option to true to expand the schema and show all properties in the request body. |
+| --headings           | options.headings              | `integer`  | 2                                                                                               | Set the value of the `headingLevel` parameter in the header so markdown processors know how many heading levels to show in the table of contents. Currently supported only by Shins, not by Slate, which lacks this feature.                                |
+| --omitBody           | options.omitBody              | `boolean`  | `false`                                                                                         | By default, Widdershins includes the body parameter as a row in the parameters table before the rows that represent the fields in the body. Set this parameter to omit that body parameter row.                                                             |
+| --omitHeader         | options.omitHeader            | `boolean`  | `false`                                                                                         | Omit the header / YAML front-matter in the generated Markdown file.                                                                                                                                                                                         |
+| --resolve            | options.resolve               | `boolean`  | `false`                                                                                         | Resolve external $refs, using the `source` parameter or the input file as the base location.                                                                                                                                                                |
+| --shallowSchemas     | options.shallowSchemas        | `boolean`  | `false`                                                                                         | When referring to a schema with a $ref, don't show the full contents of the schema.                                                                                                                                                                         |
+| N/A                  | options.source                | `string`   | None                                                                                            | The absolute location or URL of the source file to use as the base to resolve relative references ($refs) from; required if options.resolve is set to true. For CLI commands, Widdershins uses the input file as the base for the $refs.                    |
+| --summary            | options.tocSummary            | `boolean`  | `false`                                                                                         | Use the operation summary as the TOC entry instead of the ID.                                                                                                                                                                                               |
+| --useBodyName        | options.useBodyName           | `boolean`  | Use original param name for OpenAPI 2.0 body parameter.                                         |
+| -v, --verbose        | options.verbose               | `boolean`  | `false`                                                                                         | Increase verbosity.                                                                                                                                                                                                                                         |
+| -h, --help           | options.help                  | `boolean`  | `false`                                                                                         | Show help.                                                                                                                                                                                                                                                  |
+| --version            | options.version               | `boolean`  | `false`                                                                                         | Show version number.                                                                                                                                                                                                                                        |
+| -c, --code           | options.codeSamples           | `boolean`  | `false`                                                                                         | Omit generated code samples.                                                                                                                                                                                                                                |
+| --httpsnippet        | options.httpsnippet           | `boolean`  | `false`                                                                                         | Use httpsnippet to generate code samples.                                                                                                                                                                                                                   |
+| -d, --discovery      | options.discovery             | `boolean`  | `false`                                                                                         | Include schema.org WebAPI discovery data.                                                                                                                                                                                                                   |
+| -e, --environment    | N/A                           | `string`   | None                                                                                            | File to load config options from.                                                                                                                                                                                                                           |
+| -i, --includes       | options.includes              | `string`   | None                                                                                            | List of files to put in the `include` header of the output Markdown. Processors such as Shins can then import the contents of these files.                                                                                                                  |
+| -l, --lang           | options.lang                  | `boolean`  | `false`                                                                                         | Generate the list of languages for code samples based on the languages used in the source file's `x-code-samples` examples.                                                                                                                                 |
+| --language_tabs      | options.language_tabs         | `string`   | (Differs for each input type)                                                                   | List of language tabs for code samples using language[:label[:client]] format, such as `javascript:JavaScript:request`.                                                                                                                                     |
+| -m, --maxDepth       | options.maxDepth              | `integer`  | 10                                                                                              | Maximum depth to show for schema examples.                                                                                                                                                                                                                  |
+| -o, --outfile        | N/A                           | `string`   | None                                                                                            | File to write the output markdown to. If left blank, Widdershins sends the output to stdout.                                                                                                                                                                |
+| -r, --raw            | **inverse** of options.sample | `boolean`  | `false`                                                                                         | Output raw schemas instead of example values.                                                                                                                                                                                                               |
+| -s, --search         | options.search                | `boolean`  | `true`                                                                                          | Set the value of the `search` parameter in the header so Markdown processors like Slate include search or not in their output.                                                                                                                              |
+| -t, --theme          | options.theme                 | `string`   | darkula                                                                                         | Syntax-highlighter theme to use.                                                                                                                                                                                                                            |
+| -u, --user_templates | options.user_templates        | `string`   | None                                                                                            | Directory to load override templates from.                                                                                                                                                                                                                  |
+| -x, --experimental   | options.experimental          | `boolean`  |                                                                                                 | Use httpSnippet for multipart mediatypes.                                                                                                                                                                                                                   |
+| -y, --yaml           | options.yaml                  | `boolean`  | `false`                                                                                         | Display JSON schemas in YAML format.                                                                                                                                                                                                                        |
+|                      | options.templateCallback      | `function` | None                                                                                            | A `function` that is called before and after each template (JavaScript code only).                                                                                                                                                                          |
+|                      | options.toc_footers           | `object`   | A map of `url`s and `description`s to be added to the ToC footers array (JavaScript code only). |
 
 In Node.JS code, create an options object and pass it to the Widdershins `convert` function, as in this example:
 
 ```javascript
-const converter = require('widdershins');
+const converter = require("widdershins");
 let options = {}; // defaults shown
 options.codeSamples = true;
 options.httpsnippet = false;
@@ -93,8 +117,10 @@ options.httpsnippet = false;
 //options.language_clients = [];
 //options.loadedFrom = sourceUrl; // only needed if input document is relative
 //options.user_templates = './user_templates';
-options.templateCallback = function(templateName,stage,data) { return data };
-options.theme = 'darkula';
+options.templateCallback = function (templateName, stage, data) {
+    return data;
+};
+options.theme = "darkula";
 options.search = true;
 options.sample = true; // set false by --raw
 options.discovery = false;
@@ -105,37 +131,52 @@ options.headings = 2;
 options.yaml = false;
 //options.resolve = false;
 //options.source = sourceUrl; // if resolve is true, must be set to full path or URL of the input document
-converter.convert(apiObj,options)
-.then(str => {
-  // str contains the converted markdown
-})
-.catch(err => {
-  console.error(err);
-});
+converter
+    .convert(apiObj, options)
+    .then((str) => {
+        // str contains the converted markdown
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 To only include a subset of the pre-defined language-tabs, or to rename their display-names, you can override the `options.language_tabs`:
 
 ```javascript
-options.language_tabs = [{ 'go': 'Go' }, { 'http': 'HTTP' }, { 'javascript': 'JavaScript' }, { 'javascript--node': 'Node.JS' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }];
+options.language_tabs = [
+    { go: "Go" },
+    { http: "HTTP" },
+    { javascript: "JavaScript" },
+    { "javascript--node": "Node.JS" },
+    { python: "Python" },
+    { ruby: "Ruby" },
+];
 ```
 
 The `--environment` option specifies a JSON or YAML-formatted `options` object, for example:
 
 ```json
 {
-  "language_tabs": [{ "go": "Go" }, { "http": "HTTP" }, { "javascript": "JavaScript" }, { "javascript--node": "Node.JS" }, { "python": "Python" }, { "ruby": "Ruby" }],
-  "verbose": true,
-  "tagGroups": [
-    {
-      "title": "Companies",
-      "tags": ["companies"]
-    },
-    {
-      "title": "Billing",
-      "tags": ["invoice-create", "invoice-close", "invoice-delete"]
-    }
-  ]
+    "language_tabs": [
+        { "go": "Go" },
+        { "http": "HTTP" },
+        { "javascript": "JavaScript" },
+        { "javascript--node": "Node.JS" },
+        { "python": "Python" },
+        { "ruby": "Ruby" }
+    ],
+    "verbose": true,
+    "tagGroups": [
+        {
+            "title": "Companies",
+            "tags": ["companies"]
+        },
+        {
+            "title": "Billing",
+            "tags": ["invoice-create", "invoice-close", "invoice-delete"]
+        }
+    ]
 }
 ```
 
@@ -146,7 +187,11 @@ If you need to support a version of Slate \<v1.5.0 (or a renderer which also doe
 If you are using the `httpsnippet` option to generate code samples, you can specify the client library used to perform the requests for each language by overriding the `options.language_clients`:
 
 ```javascript
-options.language_clients = [{ 'shell': 'curl' }, { 'node': 'request' }, { 'java': 'unirest' }];
+options.language_clients = [
+    { shell: "curl" },
+    { node: "request" },
+    { java: "unirest" },
+];
 ```
 
 If the language name differs between the markdown name required to syntax highlight and the httpsnippet required target, both can be specified in the form `markdown--target`.
@@ -180,13 +225,14 @@ Templates are compiled with [doT.js](https://github.com/olado/doT#readme).
 
 Templates have access to a `data` object with a range of properties based on the document context. For information about the parameters, see the README file for the appropriate templates:
 
-* [Swagger 2.0 / OpenAPI 3.0.x template parameters](/templates/openapi3/README.md)
-* [AsyncAPI 1.x template parameters](/templates/asyncapi1/README.md)
-* [Semoasa 0.1.0 template parameters](/templates/semoasa/README.md)
+-   [Swagger 2.0 / OpenAPI 3.0.x template parameters](/templates/openapi3/README.md)
+-   [AsyncAPI 1.x template parameters](/templates/asyncapi1/README.md)
+-   [Semoasa 0.1.0 template parameters](/templates/semoasa/README.md)
 
 To print the value of a parameter or variable in a template, use the code `{{=parameterName}}`. For example, to print the title of an OpenAPI 3 spec (from its `info.title` field), use the code `{{=data.api.info.title}}`.
 
 To loop through values in an array, use the code `{{~ arrayName :tempVariable}}` to start the loop and the code `{{~}}` to close the loop. For example, the OpenAPI 3 partial `parameters.def` uses this code to create a table of the parameters in an operation:
+
 ```
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -195,6 +241,7 @@ To loop through values in an array, use the code `{{~ arrayName :tempVariable}}`
 ```
 
 For if/then logic, use the code `{{? booleanExpression}}` to start the code block and the code `{{?}}` to close the block. For example, the OpenAPI 3 `main.dot` template calls the `security.def` partial to show information about the security schemes if the OpenAPI spec includes a `securitySchemes` section:
+
 ```
 {{? data.api.components && data.api.components.securitySchemes }}
 {{#def.security}}
@@ -202,6 +249,7 @@ For if/then logic, use the code `{{? booleanExpression}}` to start the code bloc
 ```
 
 You can run arbitrary JavaScript within a template by inserting a code block within curly braces. For example, this code creates a variable and references it with normal doT.js syntax later in the template:
+
 ```
 {{ {
 let message = "Hello!";
@@ -215,32 +263,33 @@ let message = "Hello!";
 The `templateCallback` parameter points to a function that Widdershins calls before and after each template runs. The callback function receives a `data` object that contains the spec that Widdershins is processing; the function must return this object. You can use callback functions only if you are calling Widdershins from JavaScript code, not from the command line.
 
 Widdershins passes these variables to the callback function:
-- `templateName`: The name of the template, such as `main`.
-- `stage`: Whether Widdershins is calling the callback function before (`pre`) or after (`post`) the template.
-- `data`: An object that contains the data that Widdershins is processing. You can mutate the `data` object in any way you see fit, but the function must return it whether it changes it or not. Content that you put in the `data.append` property is appended to the current output stream.
+
+-   `templateName`: The name of the template, such as `main`.
+-   `stage`: Whether Widdershins is calling the callback function before (`pre`) or after (`post`) the template.
+-   `data`: An object that contains the data that Widdershins is processing. You can mutate the `data` object in any way you see fit, but the function must return it whether it changes it or not. Content that you put in the `data.append` property is appended to the current output stream.
 
 For example, this JavaScript code prints the name of the template and the processing stage in the output Markdown:
-```javascript
-'use strict';
 
-const converter = require('widdershins');
-const fs = require('fs');
+```javascript
+"use strict";
+
+const converter = require("widdershins");
+const fs = require("fs");
 
 let options = {};
 options.templateCallback = myCallBackFunction;
 
 function myCallBackFunction(templateName, stage, data) {
-  let statusString = "Template name: " + templateName + "\n";
-  statusString += "Stage: " + stage + "\n";
-  data.append = statusString;
-  return data;
+    let statusString = "Template name: " + templateName + "\n";
+    statusString += "Stage: " + stage + "\n";
+    data.append = statusString;
+    return data;
 }
 
-const apiObj = JSON.parse(fs.readFileSync('defs/petstore3.json'));
+const apiObj = JSON.parse(fs.readFileSync("defs/petstore3.json"));
 
-converter.convert(apiObj, options)
-.then(str => {
-  fs.writeFileSync('petstore3Output.md', str, 'utf8');
+converter.convert(apiObj, options).then((str) => {
+    fs.writeFileSync("petstore3Output.md", str, "utf8");
 });
 ```
 
@@ -254,8 +303,8 @@ node testRunner {path-to-APIs}
 
 The test harness currently expects `.yaml` or `.json` files and has been tested against
 
-* [APIs.guru](https://github.com/APIs-guru/OpenAPI-directory)
-* [Mermade OpenAPI definitions collection](https://github.com/mermade/OpenAPI-definitions)
+-   [APIs.guru](https://github.com/APIs-guru/OpenAPI-directory)
+-   [Mermade OpenAPI definitions collection](https://github.com/mermade/OpenAPI-definitions)
 
 ### Comparison between this and other OpenAPI / Swagger to Slate tools
 
@@ -263,27 +312,27 @@ The test harness currently expects `.yaml` or `.json` files and has been tested 
 
 ### Acknowledgements
 
-* [@latgeek](https://github.com/LatGeek) for the logo.
-* [@vfernandestoptal](https://github.com/vfernandestoptal) for the httpsnippet support.
+-   [@latgeek](https://github.com/LatGeek) for the logo.
+-   [@vfernandestoptal](https://github.com/vfernandestoptal) for the httpsnippet support.
 
 ### Widdershins in the wild
 
 Please feel free to add a link to your API documentation here.
 
-* [GOV.UK Content API v1.0.0](https://content-api.publishing.service.gov.uk/reference.html)
-* [GOV UK Digital Marketplace API v1.0.0](https://alphagov.github.io/digitalmarketplace-api-docs/#digital-marketplace-api-v1-0-0)
-* [Capital One API](https://www.capitalone.co.uk/developer/api/)
-* [Cognite Data API](http://doc.cognitedata.com/)
-* [SpeckleWorks API](https://speckleworks.github.io/SpeckleSpecs)
-* [Bank by API](https://tbicr.github.io/bank-api/bank-api.html)
-* [Open EO API](https://open-eo.github.io/openeo-api-poc/apireference/index.html)
-* [Split Payments API](http://docs.split.cash/)
-* [LeApp daemon API](https://leapp-to.github.io/shins/index.html)
-* [Shutterstock API](https://api-reference.shutterstock.com/)
-* [Shotstack Video Editing API](https://shotstack.io/docs/api/index.html)
-* [Admetricks API](http://dev.admetricks.com/)
-* [Eqivo API](https://eqivo.org/)
+-   [GOV.UK Content API v1.0.0](https://content-api.publishing.service.gov.uk/reference.html)
+-   [GOV UK Digital Marketplace API v1.0.0](https://alphagov.github.io/digitalmarketplace-api-docs/#digital-marketplace-api-v1-0-0)
+-   [Capital One API](https://www.capitalone.co.uk/developer/api/)
+-   [Cognite Data API](http://doc.cognitedata.com/)
+-   [SpeckleWorks API](https://speckleworks.github.io/SpeckleSpecs)
+-   [Bank by API](https://tbicr.github.io/bank-api/bank-api.html)
+-   [Open EO API](https://open-eo.github.io/openeo-api-poc/apireference/index.html)
+-   [Split Payments API](http://docs.split.cash/)
+-   [LeApp daemon API](https://leapp-to.github.io/shins/index.html)
+-   [Shutterstock API](https://api-reference.shutterstock.com/)
+-   [Shotstack Video Editing API](https://shotstack.io/docs/api/index.html)
+-   [Admetricks API](http://dev.admetricks.com/)
+-   [Eqivo API](https://eqivo.org/)
 
 ### Widdershins and ReSlate
 
-* `Widdershins` works well with Slate, but for a solely Node.js-based experience, why not try the [ReSlate](https://github.com/mermade/reslate) port?
+-   `Widdershins` works well with Slate, but for a solely Node.js-based experience, why not try the [ReSlate](https://github.com/mermade/reslate) port?

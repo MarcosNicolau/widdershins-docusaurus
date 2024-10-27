@@ -98,7 +98,7 @@ var argv = require('yargs')
     .describe('yaml','Display JSON schemas in YAML format.')
     .help('h')
     .alias('h','Show help.')
-    .version()
+    .version("✨ This is a modified version of Widdershins, enhanced for better integration with Docusaurus features. ✨")
     .argv;
 
 var options = {};

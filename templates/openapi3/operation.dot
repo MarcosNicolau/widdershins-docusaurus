@@ -15,30 +15,22 @@
 {{ data.utils.mergePathParameters(data); }}
 {{ data.utils.getParameters(data); }}
 
-{{? data.options.codeSamples || data.operation["x-code-samples"] }}
-> Code samples
-
-{{= data.utils.getCodeSamples(data) }}
-{{?}}
-
 `{{= data.methodUpper}} {{=data.method.path}}`
 
 {{? data.operation.summary && !data.options.tocSummary}}*{{= data.operation.summary }}*{{?}}
 
 {{? data.operation.description}}{{= data.operation.description }}{{?}}
 
-{{? data.operation.requestBody}}
-> Body parameter
-
-{{? data.bodyParameter.exampleValues.description }}
-> {{= data.bodyParameter.exampleValues.description }}
-{{?}}
-
-{{= data.utils.getBodyParameterExamples(data) }}
-{{?}}
-
 {{? data.parameters && data.parameters.length }}
 {{#def.parameters}}
+{{?}}
+
+{{? data.options.codeSamples || data.operation["x-code-samples"] }}
+### Code samples
+
+<Tabs>
+{{= data.utils.getCodeSamples(data) }}
+</Tabs>
 {{?}}
 
 {{#def.responses}}
