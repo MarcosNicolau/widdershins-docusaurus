@@ -4,8 +4,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 {{= data.tags.section }}
-<h1 id="{{=data.title_prefix}}">{{=data.api.info && data.api.info.title}} {{=data.version}}</h1>
-
 {{? data.api.info && data.api.info.description}}{{=data.api.info.description}}{{?}}
 
 {{? data.api.servers }}
@@ -36,7 +34,6 @@ Base URLs:
 {{ data.resource = data.resources[r]; }}
 
 {{= data.tags.section }}
-<h1 id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h1>
 
 {{? data.resource.description }}{{= data.resource.description}}{{?}}
 
