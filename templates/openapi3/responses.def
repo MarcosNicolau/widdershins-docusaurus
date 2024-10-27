@@ -4,19 +4,21 @@
 {{ if (response.content) data.responseSchemas = true; }}
 {{~}}
 
-{{? data.responseSchemas }}
-> Example responses
-
-{{= data.utils.getResponseExamples(data) }}
-{{?}}
-
 {{= data.tags.section }}
-<h3 id="{{=data.operationUniqueSlug}}-responses">Responses</h3>
+## Responses
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 {{~ data.responses :r}}|{{=r.status}}|{{=r.meaning}}|{{=r.description || 'none'}}|{{=r.schema}}|
 {{~}}
+
+{{? data.responseSchemas }}
+### Example responses
+
+<Tabs>
+{{= data.utils.getResponseExamples(data) }}
+</Tabs>
+{{?}}
 
 {{ data.responseSchemas = false; }}
 {{~ data.responses :response }}
