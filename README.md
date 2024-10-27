@@ -8,7 +8,7 @@ A fork of widdershins to generate markdown using docusaurus features.
 -   Response examples in openapi3 have been update to be contained in `<Tabs>` and `<TabItem>`.
 -   The order has been change a little to my personal preference.
 
-The complete diff can be seen [here](#15).
+The complete diff can be seen [here](https://github.com/MarcosNicolau/widdershins-docusaurus/pull/1).
 
 Took inspiration from this [documentation](https://countrystatecity.in/docs/api/all-countries/) which I found on docusaurus showcase section.
 
